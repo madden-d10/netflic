@@ -12,14 +12,6 @@ $(document).ready(function() {
       getImages();
 
   }); 
-
-   //Handler for the new asset submission button
-  $("#subNewForm").click(function(){
-
-    //Execute the submit new asset function
-    submitNewAsset();
-    
-  }); 
 });
 
 //A function to get a list of all the assets and write them to the Div with the AssetList Div

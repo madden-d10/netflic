@@ -1,13 +1,14 @@
 //The URIs of the REST endpoint
-IUPS = "https://prod-23.eastus.logic.azure.com:443/workflows/f8c3172306d4408fa7484f5645fb862d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=IcLapt7rtLbbWvyaH0uA4gYPNh1GEnJN9dHppQDhf7U";
+VUP = "https://prod-87.eastus.logic.azure.com:443/workflows/86460afb2f6244248cb457439e7b9abc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=FhEHiZOFFpiz_XJR0Cm4kEYRjgH6csb-1ulh9Di3O-Q";
 
 //Handlers for button clicks
 $(document).ready(function() {
-  $("#retImages").click(function(){
-      //Run the get asset list function
-      getImages();
-  }); 
-});
+     //Handler for the new asset submission button
+     $("#subNewForm").click(function(){
+      //Execute the submit new asset function
+      submitNewAsset();
+    }); 
+}); 
 
 //A function to submit a new asset to the REST endpoint 
 function submitNewAsset(){
@@ -21,7 +22,7 @@ function submitNewAsset(){
 
   //Post the form data to the endpoint, note the need to set the content type header
   $.ajax({ 
-    url: IUPS, 
+    url: VUP, 
     data: submitData, 
     cache: false, 
     enctype: 'multipart/form-data', 
@@ -29,7 +30,6 @@ function submitNewAsset(){
     processData: false, 
     type: 'POST', 
     success: function(data){ 
-
     } 
   });
 }
