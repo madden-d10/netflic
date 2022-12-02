@@ -17,8 +17,13 @@ function submitNewAsset(){
   //Get form variables and append them to the form data object
   submitData.append('FileName', $('#FileName').val()); 
   submitData.append('userID', $('#userID').val()); 
-  submitData.append('userName', $('#userName').val()); 
-  submitData.append('File', $("#UpFile")[0].files[0]); 
+  submitData.append('userName', $('#userName').val());
+  submitData.append('title', $('#title').val());
+  submitData.append('publisher', $('#publisher').val());
+  submitData.append('producer', $('#producer').val());
+  submitData.append('genre', $('#genre').val()); 
+  submitData.append('ageRating', $('#ageRating').val()); 
+  submitData.append('File', $("#UpFileVideo")[0].files[0]); 
 
   //Post the form data to the endpoint, note the need to set the content type header
   $.ajax({ 
