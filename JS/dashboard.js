@@ -9,6 +9,14 @@ $(document).ready(function() {
   $("#retImages").click(function(){
       //Run the get asset list function
       getImages();
+      $.ajax({
+        url:'https://netflicblobstorage.file.core.windows.net/netlfic-file-share/netflic-directory/638057551108786352.vtt', 
+        cache: false, 
+        contentType: false, 
+        processData: false, 
+        type: 'GET', 
+        success: function(data) {console.log(data)}
+      })
   }); 
 });
 
