@@ -1,6 +1,7 @@
 //The URIs of the REST endpoint
 RAI = "https://prod-53.eastus.logic.azure.com:443/workflows/74aa47df4e434d568e167608fb87022d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qM2-jpUWzNz0oOyLETH0LmHjn1zWB0UwF6iSL4BfrCk";
 RAV = "https://prod-73.eastus.logic.azure.com:443/workflows/b974a35e9773429f918aebbcac24a065/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YgfBH-S8ZELkkKTz2AcxlhPOmZ9F9N59qCYod2sc5cM"
+FUC = "https://netflicblobstorage.blob.core.windows.net/netfliccaptionstore/638056888040487860.vtt"
 // Base URI: 
 BLOB_ACCOUNT = "https://netflicblobstorage.blob.core.windows.net";
 
@@ -29,6 +30,13 @@ function submitRating(formID, id) {
   });
 }
 
+// sessionStorage.setItem("key", $.ajax({ 
+//   url: FUC,
+//   headers: {
+//     "Access-Control-Allow-Origin": "*",
+//     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+//   },
+//   type: 'Get'}));
 //A function to get a list of all the assets and write them to the Div with the AssetList Div
 function getImages(){
   //Replace the current HTML in that div with a loading message
@@ -41,8 +49,7 @@ function getImages(){
     //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
     $.each( data, function( key, val ) {
       items.push( "<hr />");
-      // items.push("<img src='"+BLOB_ACCOUNT + val["filepath"] +"' width='400'/> <br />")
-      items.push("<video width='320' height='240' controls><source src='"+BLOB_ACCOUNT + val["filepath"] +"' type='video/mp4'><track default kind='captions' srclang='en' src='"+BLOB_ACCOUNT + "/netfliccaptionstore/638056888040487860.vtt'></video><br/ >")
+      items.push("<video width='320' height='240' controls><source src='"+BLOB_ACCOUNT + val["filepath"] +"' type='video/mp4'><track default kind='captions' srclang='en' src='./638056888040487860.vtt'></video><br/ >")
       items.push( "File : " + val["fileName"] + "<br />");
       items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
       items.push( `<form id='ratingForm${i}' data-selected='1'>
