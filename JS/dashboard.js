@@ -11,7 +11,6 @@ $(document).ready(function() {
       getImages();
   }); 
 });
-
 function submitRating(formID, id) {
   //Get form variables and append them to the form data object
   const num = formID.charAt(formID.length -1)
@@ -43,7 +42,7 @@ function getImages(){
     $.each( data, function( key, val ) {
       items.push( "<hr />");
       // items.push("<img src='"+BLOB_ACCOUNT + val["filepath"] +"' width='400'/> <br />")
-      items.push("<video width='320' height='240' controls><source src='"+BLOB_ACCOUNT + val["filepath"] +"' type='video/mp4'></video><br/ >")
+      items.push("<video width='320' height='240' controls><source src='"+BLOB_ACCOUNT + val["filepath"] +"' type='video/mp4'><track default kind='captions' srclang='en' src='"+BLOB_ACCOUNT + "/netfliccaptionstore/638056888040487860.vtt'></video><br/ >")
       items.push( "File : " + val["fileName"] + "<br />");
       items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
       items.push( `<form id='ratingForm${i}' data-selected='1'>
