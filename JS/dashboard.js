@@ -59,7 +59,6 @@ function getImages(){
     //Create an array to hold all the retrieved assets
     var items = [];
     let i = 0
-    console.log(data[1])
     //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
     $.each( data[0], function( key, val ) {
       items.push( "<hr />");
