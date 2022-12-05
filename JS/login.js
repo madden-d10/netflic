@@ -1,3 +1,16 @@
+if (sessionStorage.getItem('isAdmin') === 'true') {
+    const navbar = document.getElementsByClassName('navbar-nav')
+    const li =  document.createElement("li");
+    li.setAttribute('class', 'nav-item')
+    const a = document.createElement("a");
+    a.setAttribute('class', 'nav-link')
+    a.setAttribute('href', './uploadVideo.html')
+    a.textContent = 'Upload Video'
+    console.log($('.navbar-nav'))
+    li.appendChild(a)
+    navbar[0].appendChild(li)
+  }
+
 $(document).ready(function() {
      $("#subLoginForm").click(function(){
       getUser();

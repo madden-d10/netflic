@@ -4,6 +4,19 @@ RAV = "https://prod-73.eastus.logic.azure.com:443/workflows/b974a35e9773429f918a
 // Base URI: 
 BLOB_ACCOUNT = "https://netflicblobstorage.blob.core.windows.net";
 
+if (sessionStorage.getItem('isAdmin') === 'true') {
+  const navbar = document.getElementsByClassName('navbar-nav')
+  const li =  document.createElement("li");
+  li.setAttribute('class', 'nav-item')
+  const a = document.createElement("a");
+  a.setAttribute('class', 'nav-link')
+  a.setAttribute('href', './uploadVideo.html')
+  a.textContent = 'Upload Video'
+  console.log($('.navbar-nav'))
+  li.appendChild(a)
+  navbar[0].appendChild(li)
+}
+
 //Handlers for button clicks
 $(document).ready(function() {
   $("#retImages").click(function(){
@@ -57,7 +70,9 @@ function getImages(){
                       <input type='number' name='rating' id='rating${i}'/>
                       <button type="button" id='${val["id"]}' class="btn btn-primary subRatingForm">Submit Rating</button><br/>
                     </form><br/>`);
-      items.push( `<button type="button" data-documentid='${val["id"]}' data-filepath='${val["filepath"]}' class="btn btn-primary deleteVideo" on>Delete</button><br/>`);
+      if (sessionStorage.getItem('isAdmin') === 'true') {
+        items.push( `<button type="button" data-documentid='${val["id"]}' data-filepath='${val["filepath"]}' class="btn btn-primary deleteVideo" on>Delete</button><br/>`);
+      }
       items.push(``)
       items.push( "<hr />");
       i++ 
