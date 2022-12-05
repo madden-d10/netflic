@@ -11,6 +11,7 @@ $(document).ready(function() {
       getImages();
   }); 
 });
+
 function submitRating(formID, id) {
   //Get form variables and append them to the form data object
   const num = formID.charAt(formID.length -1)
