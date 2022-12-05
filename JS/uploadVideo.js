@@ -7,6 +7,7 @@ $(document).ready(function() {
      $("#subNewForm").click(function(){
       //Execute the submit new asset function
       submitNewAsset();
+      $('#newAssetForm').trigger("reset");
     }); 
 }); 
 
