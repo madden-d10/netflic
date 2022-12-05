@@ -45,11 +45,12 @@ function getImages(){
     //Create an array to hold all the retrieved assets
     var items = [];
     let i = 0
+    console.log(data[1])
     //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-    $.each( data, function( key, val ) {
+    $.each( data[0], function( key, val ) {
       let captionFileName = val["filepath"].replace('/netflicvideostore/', '')
       items.push( "<hr />");
-      items.push(`<video width='320' height='240' controls><source src='${BLOB_ACCOUNT}${val["filepath"]}' type='video/mp4'><track default kind='captions' srclang='en' src='./${captionFileName}.vtt'></video><br/ >`)
+      items.push(`<video width='320' height='240' controls><source src='${BLOB_ACCOUNT}${val["filepath"]}' type='video/mp4'><track default kind='captions' srclang='en' src='${BLOB_ACCOUNT}${val["filepath"].replace("netflicvideostore", "netfliccaptionstore")}.vtt''></video><br/ >`)
       items.push( "File : " + val["fileName"] + "<br />");
       items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
       items.push( `<form id='ratingForm${i}' data-selected='1'>
