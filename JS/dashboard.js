@@ -50,7 +50,7 @@ function getImages(){
     $.each( data[0], function( key, val ) {
       let captionFileName = val["filepath"].replace('/netflicvideostore/', '')
       items.push( "<hr />");
-      items.push(`<video width='320' height='240' controls crossorigin="anonymous"><source src='${BLOB_ACCOUNT}${val["filepath"]}' type='video/mp4' crossorigin="anonymous"><track default kind='captions' srclang='en' src='${BLOB_ACCOUNT}${val["filepath"].replace("netflicvideostore", "netfliccaptionstore")}.vtt'' crossorigin="anonymous"></video><br/ >`)
+      items.push(`<video width='320' height='240' controls><source src='${BLOB_ACCOUNT}${val["filepath"]}' type='video/mp4'><track default kind='captions' srclang='en' src='${BLOB_ACCOUNT}${val["filepath"].replace("netflicvideostore", "netfliccaptionstore")}.vtt''></video><br/ >`)
       items.push( "File : " + val["fileName"] + "<br />");
       items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
       items.push( `<form id='ratingForm${i}' data-selected='1'>
