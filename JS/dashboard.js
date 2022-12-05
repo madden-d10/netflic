@@ -16,14 +16,21 @@ function submitRating(formID, id) {
   const num = formID.charAt(formID.length -1)
   const rating = $(`#${formID} #rating${num}`).val()
 
-  RUP= "https://prod-46.eastus.logic.azure.com/workflows/eb73bdd7ca624370b0af299fcdd354a5/triggers/manual/paths/invoke/" + id + "/" + rating + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=hbDbumLq4y9MJ5-1SnwwZjd5AVOnGfSeFakvO4kGZqI"
-
   $.ajax({ 
-    url: RUP, 
+    url: "https://prod-46.eastus.logic.azure.com/workflows/eb73bdd7ca624370b0af299fcdd354a5/triggers/manual/paths/invoke/" + id + "/" + rating + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=hbDbumLq4y9MJ5-1SnwwZjd5AVOnGfSeFakvO4kGZqI", 
     cache: false, 
     contentType: false, 
     processData: false, 
     type: 'POST', 
+    success: function(data){ 
+    } 
+  });
+}
+
+function deleteVideo(docID, filepath) {
+  $.ajax({ 
+    url: "https://prod-76.eastus.logic.azure.com/workflows/5b02ce8174554f65a930aad3c84e84d1/triggers/manual/paths/invoke/" + filepath + "/" + docID + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JhqA0B6GR8ChvqU-wtj9od2ZMwD2eYNPwILIK-7eCGg", 
+    type: 'DELETE', 
     success: function(data){ 
     } 
   });
@@ -41,7 +48,6 @@ function getImages(){
     //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
     $.each( data, function( key, val ) {
       let captionFileName = val["filepath"].replace('/netflicvideostore/', '')
-      console.log(captionFileName)
       items.push( "<hr />");
       items.push(`<video width='320' height='240' controls><source src='${BLOB_ACCOUNT}${val["filepath"]}' type='video/mp4'><track default kind='captions' srclang='en' src='./${captionFileName}.vtt'></video><br/ >`)
       items.push( "File : " + val["fileName"] + "<br />");
@@ -50,6 +56,7 @@ function getImages(){
                       <input type='number' name='rating' id='rating${i}'/>
                       <button type="button" id='${val["id"]}' class="btn btn-primary subRatingForm">Submit Rating</button><br/>
                     </form><br/>`);
+      items.push( `<button type="button" data-documentid='${val["id"]}' data-filepath='${val["filepath"]}' class="btn btn-primary deleteVideo" on>Delete</button><br/>`);
       items.push(``)
       items.push( "<hr />");
       i++ 
@@ -62,6 +69,10 @@ function getImages(){
     
     $(`.subRatingForm`).click(function(){
       submitRating($(this)[0].parentNode.id, $(this)[0].id)
+    });
+
+    $(`.deleteVideo`).click(function(){
+      deleteVideo(this.dataset.documentid, this.dataset.filepath.replace('/netflicvideostore/', ''))
     });
   });
 }
