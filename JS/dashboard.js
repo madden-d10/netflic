@@ -1,6 +1,6 @@
 //The URIs of the REST endpoint
 RAI = "https://prod-53.eastus.logic.azure.com:443/workflows/74aa47df4e434d568e167608fb87022d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qM2-jpUWzNz0oOyLETH0LmHjn1zWB0UwF6iSL4BfrCk";
-RAV = "https://prod-73.eastus.logic.azure.com:443/workflows/b974a35e9773429f918aebbcac24a065/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YgfBH-S8ZELkkKTz2AcxlhPOmZ9F9N59qCYod2sc5cM"
+RAV = "https://prod-24.eastus.logic.azure.com:443/workflows/72ada2942b03472abd628c77df7f0ef1/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nTjut61G9GvpaWkost_PrXneNT66Hjfe5p1I3LrKyq4"
 // Base URI: 
 BLOB_ACCOUNT = "https://netflicblobstorage.blob.core.windows.net";
 
