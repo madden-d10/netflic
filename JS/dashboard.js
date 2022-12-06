@@ -60,7 +60,7 @@ function getImages(){
     var items = [];
     let i = 0
     //Iterate through the returned records and build HTML, incorporating the key values of the record in the data
-    $.each( data[0], function( key, val ) {
+    $.each( data, function( key, val ) {
       items.push( "<hr />");
       items.push(`<video width='320' height='240' controls crossorigin="anonymous"><source src='${BLOB_ACCOUNT}${val["filepath"]}' type='video/mp4'><track default kind='captions' srclang='en' src='${BLOB_ACCOUNT}${val["filepath"].replace("netflicvideostore", "netfliccaptionstore")}''></video><br/ >`)
       items.push( "File : " + val["fileName"] + "<br />");
